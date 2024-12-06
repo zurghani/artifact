@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom';
-import CardList from './CardList';
+import EventCardList from './EventCardList';
 
-export default class CardListElement extends HTMLElement {
+export default class EventCardListElement extends HTMLElement {
   // Attach a shadow DOM (optional)
   private shadowRootInstance: ShadowRoot | null = null;
 
@@ -35,7 +35,7 @@ export default class CardListElement extends HTMLElement {
 
     // Render the React component into the shadow DOM
     ReactDOM.render(
-      <CardList cards={parsedCards} />,
+      <EventCardList cards={parsedCards} />,
       this.shadowRootInstance
     );
   }
@@ -47,7 +47,7 @@ export default class CardListElement extends HTMLElement {
 }
 
 // Register the custom element
-customElements.define('card-list', CardListElement);
+customElements.define('event-card-list', EventCardListElement);
 
 
 // Key Methods in HTMLElement

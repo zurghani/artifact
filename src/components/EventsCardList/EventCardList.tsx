@@ -7,13 +7,14 @@ interface CardListProps {
   cards: { title: string; description: string }[];
 }
 
-const CardList: React.FC<CardListProps> = ({ cards }) => {
+const EventCardList: React.FC<CardListProps> = ({ cards }) => {
   const [list, setList] = useState(cards);
   useEffect(()=>{
     eventDispatch(events.init);
     
     const handleReceiveEvents = (e:CustomEvent)=>{
       console.log(e.detail)
+      // setList(e.detail)
     }
     
     eventSubscribe(events.receive,handleReceiveEvents);
@@ -38,4 +39,4 @@ const styles: { cardList: React.CSSProperties } = {
   },
 };
 
-export default CardList;
+export default EventCardList;
