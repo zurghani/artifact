@@ -1,0 +1,27 @@
+import React, { useState } from "react";
+import Card from "../Card/Card";
+import "./CardList.css";
+interface CardListProps {
+  cards: { title: string; description: string }[];
+}
+
+const CardList: React.FC<CardListProps> = ({ cards }) => {
+  const [list, setList] = useState(cards);
+  return (
+    <div style={styles.cardList} className="cards-list">
+      {list.map((card, index) => (
+        <Card key={index} title={card.title} description={card.description} />
+      ))}
+    </div>
+  );
+};
+
+const styles: { cardList: React.CSSProperties } = {
+  cardList: {
+    display: "flex",
+    flexWrap: "wrap", // Use one of the valid values: 'nowrap', 'wrap', or 'wrap-reverse'
+    gap: "16px",
+  },
+};
+
+export default CardList;

@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from '../Card';
+import Card from '../Card/Card';
 import './CardList.css'
 interface CardListProps {
   cards: { title: string; description: string }[];
