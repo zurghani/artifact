@@ -1,12 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Card from "../Card/Card";
 import "./CardList.css";
+import { eventDispatch, eventSubscribe, eventUnsubscribe } from "../../utils/events";
+import { events } from "./events";
 interface CardListProps {
   cards: { title: string; description: string }[];
 }
 
 const CardList: React.FC<CardListProps> = ({ cards }) => {
   const [list, setList] = useState(cards);
+  useEffect(()=>{
+    eventDispatch(events.init);
+    
+    const handleReceiveEvents = (e:CustomEvent)=>{
+      console.log(e.detail)
+    }
+    
+    eventSubscribe(events.receive,handleReceiveEvents);
+    return()=>{
+      eventUnsubscribe(events.receive, handleReceiveEvents)
+    }
+  },[])
   return (
     <div style={styles.cardList} className="cards-list">
       {list.map((card, index) => (

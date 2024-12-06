@@ -1,7 +1,7 @@
-function eventSubscribe(eventName: string, listener: (evt: Event) => void) {
+function eventSubscribe(eventName: string, listener: (evt: any) => void) {
   window.addEventListener(eventName, listener);
 }
-function eventUnsubscribe(eventName: string, listener: (evt: Event) => void) {
+function eventUnsubscribe(eventName: string, listener: (evt: any) => void) {
   window.removeEventListener(eventName, listener);
 }
 
