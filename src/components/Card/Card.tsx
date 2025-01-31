@@ -9,7 +9,9 @@ const Card: React.FC<CardProps> = ({ title, description }) => {
   return (
     <div style={styles.card}>
       <h2 style={styles.title}>{title}</h2>
-      <p style={styles.description}>{description}</p>
+      <b>
+        <p style={styles.description}>{description}</p>
+      </b>
     </div>
   );
 };

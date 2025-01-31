@@ -1,7 +1,7 @@
-import React from "react";
+import React, { Suspense } from "react";
 import "./CardList.css";
 
-const CardRemote = React.lazy(() => import('remoteMfeReact/Card'));
+const CardRemote = React.lazy(() => import("remoteMfeReact/Card"));
 
 interface CardListProps {
   cards: { title: string; description: string }[];
@@ -11,7 +11,13 @@ const CardList: React.FC<CardListProps> = ({ cards }) => {
   return (
     <div style={styles.cardList} className="cards-list">
       {cards.map((card, index) => (
-        <CardRemote key={index} title={card.title} description={card.description} />
+        <Suspense fallback={<div>...</div>}>
+          <CardRemote
+            key={index}
+            title={card.title}
+            description={card.description}
+          />
+        </Suspense>
       ))}
     </div>
   );

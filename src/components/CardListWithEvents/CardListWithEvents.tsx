@@ -20,7 +20,6 @@ const CardList = () => {
   useEffect(() => {
     eventDispatch(events.init);
     const handleUpdate = (event: CustomEvent) => {
-      console.log(event.detail);
       setTiles(event.detail);
     };
     eventSubscribe(events.update, handleUpdate);
