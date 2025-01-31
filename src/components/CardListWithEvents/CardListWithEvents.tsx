@@ -1,34 +1,37 @@
 import React, { useEffect, useState } from "react";
 import Tile from "../Card/Card";
-import "./CardList.css";
+import "./CardListWithEvents.css";
 import {
   eventDispatch,
   eventSubscribe,
   eventUnsubscribe,
 } from "../../utils/events";
 import { events } from "./events";
-interface CardListProps {
-  cards: { title: string; description: string }[];
+
+interface tile {
+  title: string;
+  description: string;
 }
 
-const EventCardList: React.FC<CardListProps> = ({ cards }) => {
-  const [list, setList] = useState(cards);
+const CardList = () => {
+  const [tiles, setTiles] = useState<tile[]>([]);
+
+  // react init
   useEffect(() => {
     eventDispatch(events.init);
-
-    const handleReceiveEvents = (e: CustomEvent) => {
-      console.log(e.detail);
-      // setList(e.detail)
+    const handleUpdate = (event: CustomEvent) => {
+      console.log(event.detail);
+      setTiles(event.detail);
     };
-
-    eventSubscribe(events.receive, handleReceiveEvents);
+    eventSubscribe(events.update, handleUpdate);
     return () => {
-      eventUnsubscribe(events.receive, handleReceiveEvents);
+      eventUnsubscribe(events.update, handleUpdate);
     };
   }, []);
+
   return (
     <div style={styles.cardList} className="cards-list">
-      {list.map((card, index) => (
+      {tiles.map((card, index) => (
         <Tile key={index} title={card.title} description={card.description} />
       ))}
     </div>
@@ -43,4 +46,4 @@ const styles: { cardList: React.CSSProperties } = {
   },
 };
 
-export default EventCardList;
+export default CardList;
