@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface CardProps {
   title: string;
@@ -16,19 +16,19 @@ const Card: React.FC<CardProps> = ({ title, description }) => {
 
 const styles = {
   card: {
-    border: '1px solid #ddd',
-    borderRadius: '8px',
-    padding: '16px',
-    maxWidth: '300px',
-    boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
+    border: "1px solid #ddd",
+    borderRadius: "8px",
+    padding: "16px",
+    maxWidth: "300px",
+    boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
   },
   title: {
-    fontSize: '1.5rem',
-    margin: '0 0 8px',
+    fontSize: "1.5rem",
+    margin: "0 0 8px",
   },
   description: {
-    fontSize: '1rem',
-    color: '#555',
+    fontSize: "1rem",
+    color: "#555",
   },
 };
 
