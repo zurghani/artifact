@@ -1,6 +1,8 @@
 import React from "react";
-import Tile from "../Card/Card";
 import "./CardList.css";
+
+const CardRemote = React.lazy(() => import('remoteMfeReact/Card'));
+
 interface CardListProps {
   cards: { title: string; description: string }[];
 }
@@ -9,7 +11,7 @@ const CardList: React.FC<CardListProps> = ({ cards }) => {
   return (
     <div style={styles.cardList} className="cards-list">
       {cards.map((card, index) => (
-        <Tile key={index} title={card.title} description={card.description} />
+        <CardRemote key={index} title={card.title} description={card.description} />
       ))}
     </div>
   );
